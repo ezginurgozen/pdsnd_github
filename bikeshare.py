@@ -1,5 +1,5 @@
 #bikeshare.py analyzes and provides statistical data regarding bike rental data for 3 cities:
-#Chicago, New York City, and Washington for the 1st 6 months of year 2017. 
+#Chicago, New York City, and Washington for the 1st 6 months of year 2017.
 #The data is in 3 different .csv files: chicago.csv, new_york_city.csv, washington.csv
 
 import time
@@ -68,7 +68,7 @@ def get_filters():
             print('Wrong Day Data.')
             print('Please enter day of the week again. If you want to see data for all days, type "all". Options: "all, monday, tuesday, wednesday, thursday, friday, saturday, sunday": ')
 
-    print('-'*40)
+    print('-'*50)
     return city, month, day_of_week
 #    return city, month, days_of_week[day_of_week]
 
@@ -144,7 +144,7 @@ def time_stats(df):
     print("Popular hour: ", popular_hour)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
