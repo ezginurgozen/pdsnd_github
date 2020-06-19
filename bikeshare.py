@@ -64,7 +64,7 @@ def get_filters():
             print('Wrong Day Data.')
             print('Please enter day of the week again. If you want to see data for all days, type "all". Options: "all, monday, tuesday, wednesday, thursday, friday, saturday, sunday": ')
 
-    print('-'*40)
+    print('-'*50)
     return city, month, day_of_week
 #    return city, month, days_of_week[day_of_week]
 
@@ -140,7 +140,7 @@ def time_stats(df):
     print("Popular hour: ", popular_hour)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
@@ -161,7 +161,7 @@ def station_stats(df):
     print("Popular start and end station combination: ", popular_start_end_station)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
@@ -178,7 +178,7 @@ def trip_duration_stats(df):
     print("Mean travel time is: ", mean_travel_time)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
@@ -209,7 +209,7 @@ def user_stats(df):
         print("No birth year data exists for location.")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
 def main():
     while True:
