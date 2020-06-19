@@ -109,7 +109,7 @@ def show_raw():
                 df = pd.read_csv(CITY_DATA[city])
                 break
         except:
-            print('Wrong City Data.')
+            print('No such city.')
             print('Please enter city again. Options: "chicago, new york city, washington": ')
     return df
 
