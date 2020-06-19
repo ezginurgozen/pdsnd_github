@@ -1,3 +1,7 @@
+#bikeshare.py analyzes and provides statistical data regarding bike rental data for 3 cities:
+#Chicago, New York City, and Washington for the 1st 6 months of year 2017. 
+#The data is in 3 different .csv files: chicago.csv, new_york_city.csv, washington.csv
+
 import time
 import pandas as pd
 import numpy as np
@@ -17,22 +21,22 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    #Get User Data - ENG 
-    while(True):     
-        try: 
+    #Get User Data - ENG
+    while(True):
+        try:
             city = input('Enter city name to query. Options: "chicago, new york city, washington": ')
             city = city.lower()
             if(CITY_DATA.get(city) == None):
                 continue
             else:
                 break
-        except: 
+        except:
             print('Wrong City Data.')
             print('Please enter city again. Options: "chicago, new york city, washington": ')
-    
+
     # TO DO: get user input for month (all, january, february, ... , june)
-    while(True):     
-        try: 
+    while(True):
+        try:
             month = input('Please enter month. If you want to see data for all months, type "all". Options: "all, january ,february, march, april, may, june": ')
             month = month.lower()
             months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
@@ -43,12 +47,12 @@ def get_filters():
                 print('Wrong Month Data.')
                 print('Options: "all, january ,february, march, april, may, june": ')
                 continue
-        except: 
+        except:
             print('Wrong Month Data.')
             print('Please enter month again. If you want to see data for all months, type "all". Options: "all, january ,february, march, april, may, june": ')
-            
+
         # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    while(True):     
+    while(True):
         try:
             day_of_week = input('Please enter day of the week. If you want to see data for all days, type "all". Options: "all, monday, tuesday, wednesday, thursday, friday, saturday, sunday": ')
             day_of_week = day_of_week.lower()
@@ -94,13 +98,13 @@ def load_data(city, month, day_of_week):
     if day_of_week != 'all':
         df = df[df['day_of_week'] == day_of_week.title()]
         print("Day Filter Set")
-    
+
     return df
 
 def show_raw():
     print("SHOWING RAW")
-    while(True):     
-        try: 
+    while(True):
+        try:
             city = input('Enter city name to query. Options: "chicago, new york city, washington": ')
             city = city.lower()
             if(CITY_DATA.get(city) == None):
@@ -108,7 +112,7 @@ def show_raw():
             else:
                 df = pd.read_csv(CITY_DATA[city])
                 break
-        except: 
+        except:
             print('Wrong City Data.')
             print('Please enter city again. Options: "chicago, new york city, washington": ')
     return df
@@ -162,7 +166,7 @@ def station_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -179,7 +183,7 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
@@ -210,7 +214,7 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def main():
     while True:
         try:
@@ -221,28 +225,28 @@ def main():
                 n = 0
                 while choice == 'raw':
                     print(df.iloc[n:n+5])
-                    choice = input('Type "raw" to see another 5 rows of raw data. Type "filter" to exit raw data view: ')  
+                    choice = input('Type "raw" to see another 5 rows of raw data. Type "filter" to exit raw data view: ')
                     choice = choice.lower()
-                    n += 5 
+                    n += 5
             elif choice == 'filter':
-                #get city, month, day from user and return the df containing the data you want - ENG 
+                #get city, month, day from user and return the df containing the data you want - ENG
                 city, month, day_of_week = get_filters()
-                #instead of the predefined values, ask for user input  - ENG 
+                #instead of the predefined values, ask for user input  - ENG
                 df = load_data(city, month, day_of_week)
-                        
+
                 time_stats(df)
                 station_stats(df)
                 trip_duration_stats(df)
                 user_stats(df)
             else:
                 print('Invalid input.')
-        except: 
+        except:
             print('ERROR. Please try again.')
 
-        ## See the column names in the dataframe - informative - ENG 
-#        for col in df.columns: 
+        ## See the column names in the dataframe - informative - ENG
+#        for col in df.columns:
 #            print(col)
-        
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
